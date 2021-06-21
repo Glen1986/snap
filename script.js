@@ -2,29 +2,32 @@ let str1 = "Snap";
 let str2 = "Crackle";
 let str3 = "Prime";
 
+function insOdd(n){
+  return n % 2 === 1;
+}
+function is5Multipler(n){
+  return n % 5 === 0;
+}
 function snapCrackle(maxValue){
   let output = '';
   //loop de 1 hasta el max...
-        for(let i = 0; i <= maxValue; i++){
+        for(let i = 1; i <= maxValue; i++){
   //impar = "snap";
-          if( i % 2 === 1 ){
-            output += "Snap"
+          if( insOdd(i) ){
+            output += str1;
           }
   //multiplo de 5 = "crackle";
-          if(i % 5 === 0){
-            output += "Crackle";
+          if(is5Multipler(i)){
+            output += str2;
           }
-  //multiplo de 3 y de 5 = "snapCracke";
-         // if( i % 2 === 1 && i % 5 === 0 ){
-        //    output += "SnapCrackle"
-        //  }
+  //si no es uno u otro, colocar el proio numero;
           if(!(i % 2 === 1 || i % 5 === 0)){
             output += i;
           }
+  //todo separad por ", "
           output +=", "
         }
-  //si no es uno u otro, colocar el proio numero;
-  //todo separad por ", "
+  //multiplo de 3 y de 5 = "snapCracke";
         return output
       }
 
