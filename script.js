@@ -8,69 +8,56 @@ function insOdd(n){
 function is5Multipler(n){
   return n % 5 === 0;
 }
+function isPrime(n){
+  if(n < 2){
+    return false;
+  }
+  for(let i = n - 1; i >= 2; i--){
+    if(n % i === 0){
+      return false
+    }
+  }
+  return true
+}
 function snapCrackle(maxValue){
   let output = '';
-  //loop de 1 hasta el max...
         for(let i = 1; i <= maxValue; i++){
-  //impar = "snap";
           if( insOdd(i) ){
             output += str1;
           }
-  //multiplo de 5 = "crackle";
           if(is5Multipler(i)){
             output += str2;
           }
-  //si no es uno u otro, colocar el proio numero;
           if(!(i % 2 === 1 || i % 5 === 0)){
             output += i;
           }
-  //todo separad por ", "
           output +=", "
         }
-  //multiplo de 3 y de 5 = "snapCracke";
         return output
-      }
-
-/*
-function snapCrackle(maxValue) {
-  let str4 = [];
-  for (let i = 1; i <= maxValue; i++) {
-    if (i % 2 > 0 && i % 5 === 0) {
-      str4[i] = " " + str1 + str2;
-    } else if (i % 5 === 0) {
-      str4[i] =  " " + str2;
-    } else if (i % 2 > 0) {
-      str4[i] =  " " + str1;
-    } else if (i % 2 === 0) {
-      str4[i] =  " " + i;
-    }
   }
-  return str4.toString().replace(", ", " ").replace(" ","");
-}
-let output = snapCrackle(12);
-console.log(output);
+let out = snapCrackle(15)
+console.log(out);
 
-
-
-
-
-
-function snapCracklePrime(maxValue) {
-  let str4 = [];
-  for (let i = 1; i <= maxValue; i++) {
-    if(i % 2 > 0 && i % 5 === 0){
-      str4[i] =  " " + str1+str2+str3; 
-    } else	if(i % 2 > 0 && i % i == 0 && i % 1 == 0) {
-      str4[i] =" " + str1 + str3;
-    } else	if(i % 2 > 0) {
-      str4[i] =" " + str1;
-    } else if(i % 2 == 0) {
-      str4[i] =" " + i;
-    } else if( i % 1  === 0 && i % i === 0 ) {
-		str4[i] =   " " + str3;
-    }
+function snapCracklePrime(maxValue){
+  let output = [];
+        for(let i = 1; i <= maxValue; i++){
+          let msg='';
+          if( insOdd(i) ){
+            msg += str1;
+          }
+          if(is5Multipler(i)){
+            msg += str2;
+          }
+          if (isPrime(i)){
+            msg += str3
+          }
+          if(msg.length === 0){
+            msg += i;
+          }
+          output.push(msg);
+        }
+        return output.join(', ')
   }
-  return str4.toString().replace(", ", " ").replace(" ","");
- // console.log(str4);
-}
-snapCracklePrime();*/
+let prim = snapCracklePrime(25)
+console.log(prim);
+
